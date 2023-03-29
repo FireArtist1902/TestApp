@@ -1,11 +1,13 @@
 #include <iostream>
 #include"Account.h"
 #include"User.h"
+#include<Windows.h>
 
 int main()
 {
-	std::setlocale(LC_ALL, "ru");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	Account a;
-	a.Regist();
+	a.Entrance();
 	
 }

@@ -6,7 +6,7 @@ class Account
 	User u;
 public:
 	Account();
-	void Regist();
+	void Regist(std::string l, std::string p);
 	void Entrance();
 	
 };
