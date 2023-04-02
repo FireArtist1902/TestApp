@@ -2,3 +2,5 @@
 void menu();
 void menuStart();
 void admMenu();
+void testMenu();
+void testUser();

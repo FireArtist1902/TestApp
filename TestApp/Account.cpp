@@ -16,6 +16,7 @@ void Account::Regist()
 	u.SetPassword(p);
 	if (l == "admin" and p == "admin")
 	{
+		system("cls");
 		admMenu();
 	}
 	else
@@ -56,6 +57,8 @@ void Account::Regist()
 			f << u.GetLogin() << "\n" << u.GetPassword() << "\n";
 		}
 		f.close();
+		system("cls");
+		menu();
 	}
 	
 
@@ -71,6 +74,7 @@ void Account::Login()
 	std::cin >> p;
 	if (l == "admin" and p == "admin")
 	{
+		system("cls");
 		admMenu();
 	}
 	else
@@ -101,10 +105,10 @@ void Account::Login()
 		f.close();
 		if (reg)
 		{
-
 			std::cout << "Такого аккаунта не существует, пожалуйста зпройдите процедуру регистрации" << std::endl;
 			Regist();
 		}
+		menu();
 	}
 
 }

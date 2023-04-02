@@ -1,8 +1,5 @@
 #include <iostream>
 #include<Windows.h>
-
-#include"Account.h"
-#include"User.h"
 #include "Menu.h"
 
 int main()
