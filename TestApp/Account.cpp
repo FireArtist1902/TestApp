@@ -58,7 +58,7 @@ void Account::Regist()
 		}
 		f.close();
 		system("cls");
-		menu();
+		menu(u.GetLogin());
 	}
 	
 
@@ -93,7 +93,7 @@ void Account::Login()
 					system("cls");
 					f.close();
 					reg = false;
-					menu();
+					menu(l);
 					break;
 				}
 				else
@@ -108,7 +108,7 @@ void Account::Login()
 			std::cout << "Такого аккаунта не существует, пожалуйста зпройдите процедуру регистрации" << std::endl;
 			Regist();
 		}
-		menu();
+		menu(l);
 	}
 
 }

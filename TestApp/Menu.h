@@ -1,6 +1,6 @@
 #pragma once
-void menu();
+void menu(std::string name);
 void menuStart();
 void admMenu();
 void testMenu();
-void testUser();
+void testUser(std::string name);

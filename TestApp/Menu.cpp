@@ -4,21 +4,36 @@
 #include "Menu.h"
 #include "Account.h"
 #include "Test.h"
-void menu()
+void menu(std::string name)
 {
-	Account a;
 	std::string menu;
 	std::cout << "Напишите команду, которая должна выполниться сейчас (h для подсказки)" << std::endl;
 	std::cin >> menu;
 	if (menu == "h")
 	{
 		std::cout << "test - тематики тестов" << std::endl;
+		std::cout << "stat - статистика пользователя" << std::endl;
 		std::cin >> menu;
 	}
 	if (menu == "test")
 	{
 		system("cls");
-		testUser();
+		testUser(name);
+	}
+	if (menu == "stat")
+	{
+		system("cls");
+		std::ifstream f(name + ".txt", std::ios::app);
+		if (f.is_open())
+		{
+			std::cout << "Статистика пользователя " << name << std::endl;
+			while (!f.eof())
+			{
+				std::string stat;
+				std::getline(f, stat, '\n');
+				std::cout << stat << std::endl;
+			}
+		}
 	}
 }
 
@@ -78,7 +93,7 @@ void testMenu()
 	t.addTest();
 }
 
-void testUser()
+void testUser(std::string name)
 {
 	int mark = 0, count = 0;
 	std::string sub;
@@ -123,4 +138,9 @@ void testUser()
 		std::cout << "Не правильное название предмета" << std::endl;
 	}
 	std::cout << "Ваша оценка" << mark << "/" << count << std::endl;
+	std::ofstream of(name + ".txt", std::ios::app);
+	if (of.is_open())
+	{
+		of << mark << "/" << count;
+	}
 }
