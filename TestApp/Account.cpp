@@ -1,47 +1,111 @@
 #include "Account.h"
 #include"Func.h"
+#include "Menu.h"
 #include <fstream>
-void Account::Regist(std::string l, std::string p)
-{
-	u.SetLogin(l);
-	u.SetPassword(p);
-	std::ofstream f;
-	f.open("users.txt", std::ios::app);
-	if (f.is_open())
-	{
-		f << Cezar(u.GetLogin())<< "\n" << Cezar(u.GetPassword()) << "\n";
-	}
-	f.close();
-}
-void Account::Entrance()
+#include <iostream>
+#include <string>
+
+void Account::Regist()
 {
 	std::string l, p;
-	std::fstream f("users.txt", std::ios::app);
-	std::cout << "Login: ";
+	std::cout<< "Логин: ";
 	std::cin >> l;
-	std::cout << "Password: ";
+	std::cout << "Пароль: ";
 	std::cin >> p;
-	Cezar(l);
-	Cezar(p);
-	f.open("users.txt");
-	if (f.is_open())
+	u.SetLogin(l);
+	u.SetPassword(p);
+	if (l == "admin" and p == "admin")
 	{
-		while (!f.eof())
+		admMenu();
+	}
+	else
+	{
+		std::ifstream fi;
+		fi.open("users.txt", std::ios::app);
+		if (fi.is_open())
 		{
-			std::string log;
-			std::string pass;
-			f >> log;
-			f >> pass;
-			if(l == log and p == pass)
+			while(!fi.eof())
 			{
-				std::cout << "Вы успешно вошли " << std::endl;
-				break;
+				std::string log;
+				std::string pas;
+				std::getline(fi, log, '\n');
+				std::getline(fi, pas, '\n');
+				while(l == log and p != pas)
+				{
+					std::cout << "Пользователь я таким именем уже существует, пожалуйста смените свое имя" << std::endl;
+					std::string l, p;
+					std::cout << "Логин: ";
+					std::cin >> l;
+					std::cout << "Пароль: ";
+					std::cin >> p;
+				}
+				if (l == log and p == pas)
+				{
+					std::cout << "Такой аккаунт уже существует, войдите в Ваш аккаунт" << std::endl;
+					Login();
+					break;
+					fi.close();
+				}
 			}
 		}
+		fi.close();
+		std::ofstream f;
+		f.open("users.txt", std::ios::app);
+		if (f.is_open())
+		{
+			f << u.GetLogin() << "\n" << u.GetPassword() << "\n";
+		}
+		f.close();
 	}
-	f.close();
-	std::cout<<"Вы успешно зарегистрированы, ваши данные сохранены" << std::endl;
-	Regist(l, p);
+	
+
+}
+void Account::Login()
+{
+	bool reg = true;
+	std::string l, p;
+	std::ifstream f;
+	std::cout << "Логин: ";
+	std::cin >> l;
+	std::cout << "Пароль: ";
+	std::cin >> p;
+	if (l == "admin" and p == "admin")
+	{
+		admMenu();
+	}
+	else
+	{
+		f.open("users.txt", std::ios::app);
+		if (f.is_open())
+		{
+			while (!f.eof())
+			{
+				std::string log;
+				std::string pas;
+				getline(f, log, '\n');
+				getline(f, pas, '\n');
+				if (l == log and p == pas)
+				{
+					system("cls");
+					f.close();
+					reg = false;
+					menu();
+					break;
+				}
+				else
+				{
+					reg = true;
+				}
+			}
+		}
+		f.close();
+		if (reg)
+		{
+
+			std::cout << "Такого аккаунта не существует, пожалуйста зпройдите процедуру регистрации" << std::endl;
+			Regist();
+		}
+	}
 
 }
 Account::Account()

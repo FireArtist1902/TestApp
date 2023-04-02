@@ -1,13 +1,13 @@
 #include <iostream>
+#include<Windows.h>
+
 #include"Account.h"
 #include"User.h"
-#include<Windows.h>
+#include "Menu.h"
 
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	Account a;
-	a.Entrance();
-	
+	menuStart();
 }

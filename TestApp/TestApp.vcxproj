@@ -129,12 +129,16 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Func.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="Func.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>

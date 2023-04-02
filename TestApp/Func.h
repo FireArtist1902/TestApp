@@ -1,4 +1,4 @@
 #pragma once
 #include <iostream>
 
-std::string Cezar(std::string a);
+bool compare(std::string a, char b[]);

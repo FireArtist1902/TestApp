@@ -1,12 +1,25 @@
 #include<iostream>
 #include"Func.h"
 
-std::string Cezar(std::string a)
+
+bool compare(std::string a, char b[])
 {
+	int count = 0;
 	for (int i = 0; i < a.length(); i++)
 	{
-		a[i]++;
+		if (a[i] == b[i])
+		{
+			count++;
+		}
 	}
-	return a;
+	if (count == a.length())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
+
 
