@@ -134,6 +134,7 @@ void Account::Login()
 		f.close();
 		if (reg)
 		{
+			system("cls");
 			std::cout << "Такого аккаунта не существует, пожалуйста зпройдите процедуру регистрации" << std::endl;
 			Regist();
 		}

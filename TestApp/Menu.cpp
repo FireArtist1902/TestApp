@@ -157,4 +157,5 @@ void testUser(std::string name)
 	{
 		of << mark << "/" << count;
 	}
+	of.close();
 }
