@@ -76,6 +76,7 @@ void admMenu()
 	{
 		system("cls");
 		std::cout << "create - создает тест" << std::endl;
+		std::cout << "clearStat - очищает статистику выбраного пользовател€" << std::endl;
 		std::cin >> menu;
 	}
 	if (menu == "create")
@@ -83,6 +84,19 @@ void admMenu()
 		system("cls");
 
 		testMenu();
+	}
+	else
+	{
+		if (menu == "clearStat")
+		{
+			system("cls");
+			std::string name;
+			std::cout << "¬ведите им€ пользовател€ статистику котторого ¬ы хотите удалить" << std::endl;
+			std::cin >> name;
+			std::ofstream f;
+			f.open(name + ".txt");
+			f.close();
+		}
 	}
 }
 
