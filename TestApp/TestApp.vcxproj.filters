@@ -24,9 +24,6 @@
     <ClCompile Include="Account.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Func.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Test.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Account.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Func.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Test.h">

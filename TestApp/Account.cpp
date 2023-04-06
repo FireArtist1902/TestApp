@@ -1,9 +1,9 @@
 #include "Account.h"
-#include"Func.h"
 #include "Menu.h"
 #include <fstream>
 #include <iostream>
 #include <string>
+
 
 void Account::Regist()
 {
