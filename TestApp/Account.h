@@ -7,6 +7,6 @@ class Account
 public:
 	Account();
 	void Regist();
-	void Login();
+	void Login();     
 	
 };
