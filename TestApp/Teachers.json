@@ -1,0 +1,20 @@
+[
+  {
+    "Login": "Test",
+    "Password": "Test",
+    "IsStudent": false,
+    "IsTeacher": true
+  },
+  {
+    "Login": "Test2",
+    "Password": "Test2",
+    "IsStudent": false,
+    "IsTeacher": true
+  },
+  {
+    "Login": "Test3",
+    "Password": "Test3",
+    "IsStudent": false,
+    "IsTeacher": true
+  }
+]

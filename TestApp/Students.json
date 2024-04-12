@@ -1,0 +1,9 @@
+[
+  {
+    "Login": "Test",
+    "Password": "Test",
+    "IsStudent": true,
+    "IsTeacher": false
+  }
+
+]
