@@ -104,6 +104,7 @@
             CreateTestBtn.TabIndex = 4;
             CreateTestBtn.Text = "Створити тест";
             CreateTestBtn.UseVisualStyleBackColor = true;
+            CreateTestBtn.Click += CreateTestBtn_Click;
             // 
             // ImportTestBtn
             // 

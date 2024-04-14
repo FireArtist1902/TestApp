@@ -71,7 +71,7 @@ namespace TestApp
         {
             TestsCB.Enabled = true;
             tests = Directory.GetDirectories(@$"Subjects\{SubjectsCB.Items[selected]}\{GradesCB.Items[GradesCB.SelectedIndex]}").ToList<string>();
-            foreach(var item in tests)
+            foreach (var item in tests)
             {
                 string temp = item.Remove(0, 9 + SubjectsCB.Items[selected].ToString().Length);
                 GradesCB.Items.Add(temp);
@@ -88,6 +88,12 @@ namespace TestApp
         private void DeleteTestBtn_Click(object sender, EventArgs e)
         {
             tests.Remove(TestsCB.Items[TestsCB.SelectedIndex].ToString());
+        }
+
+        private void CreateTestBtn_Click(object sender, EventArgs e)
+        {
+            TestCreation test = new TestCreation();
+            test.ShowDialog();
         }
     }
 }
