@@ -16,6 +16,7 @@ namespace TestApp
         private List<string> answers = new List<string>();
         private List<string> correctAnswers = new List<string>();
         List<Test> tests = new List<Test>();
+        bool isClose = false;
 
         string subject;
         string grade;
@@ -61,7 +62,7 @@ namespace TestApp
         {
             if (TaskTB.Text != "" || correctAnswers.Count != 0)
             {
-                Test test = new Test() { Task = TaskTB.Text, Answers = answers, CorrectAnswers = correctAnswers, Image = pictureBox1.Image, IsMultiple = IsMultipleCB.Checked, Point = Score.Value };
+                Test test = new Test() { Task = TaskTB.Text, Answers = answers.ToList<string>(), CorrectAnswers = correctAnswers.ToList<string>(), Image = pictureBox1.Image, IsMultiple = IsMultipleCB.Checked, Point = Score.Value };
                 tests.Add(test);
             }
             else
@@ -89,11 +90,12 @@ namespace TestApp
                     sw.Write(json);
                 }
             }
+            this.Close();
+            Refresh();
         }
 
         private void TestCreation_FormClosing(object sender, FormClosingEventArgs e)
         {
-
         }
     }
 }

@@ -32,11 +32,12 @@
             GradesCB = new ComboBox();
             TestsCB = new ComboBox();
             TeacherGB = new GroupBox();
-            DeleteTestBtn = new Button();
             CreateTestBtn = new Button();
             ImportTestBtn = new Button();
             AddGradeBtn = new Button();
             AddSubjectBtn = new Button();
+            OpenFile = new OpenFileDialog();
+            CompleteTestBtn = new Button();
             TeacherGB.SuspendLayout();
             SuspendLayout();
             // 
@@ -74,28 +75,15 @@
             // 
             // TeacherGB
             // 
-            TeacherGB.Controls.Add(DeleteTestBtn);
             TeacherGB.Controls.Add(CreateTestBtn);
             TeacherGB.Controls.Add(ImportTestBtn);
             TeacherGB.Controls.Add(AddGradeBtn);
             TeacherGB.Controls.Add(AddSubjectBtn);
             TeacherGB.Location = new Point(12, 46);
             TeacherGB.Name = "TeacherGB";
-            TeacherGB.Size = new Size(501, 125);
+            TeacherGB.Size = new Size(319, 125);
             TeacherGB.TabIndex = 3;
             TeacherGB.TabStop = false;
-            // 
-            // DeleteTestBtn
-            // 
-            DeleteTestBtn.AutoSize = true;
-            DeleteTestBtn.Enabled = false;
-            DeleteTestBtn.Location = new Point(350, 73);
-            DeleteTestBtn.Name = "DeleteTestBtn";
-            DeleteTestBtn.Size = new Size(136, 30);
-            DeleteTestBtn.TabIndex = 5;
-            DeleteTestBtn.Text = "Видалити тест";
-            DeleteTestBtn.UseVisualStyleBackColor = true;
-            DeleteTestBtn.Click += DeleteTestBtn_Click;
             // 
             // CreateTestBtn
             // 
@@ -119,6 +107,7 @@
             ImportTestBtn.TabIndex = 3;
             ImportTestBtn.Text = "Імпортувати тест";
             ImportTestBtn.UseVisualStyleBackColor = true;
+            ImportTestBtn.Click += ImportTestBtn_Click;
             // 
             // AddGradeBtn
             // 
@@ -143,12 +132,30 @@
             AddSubjectBtn.UseVisualStyleBackColor = true;
             AddSubjectBtn.Click += AddSubjectBtn_Click;
             // 
+            // OpenFile
+            // 
+            OpenFile.FileName = "openFileDialog1";
+            OpenFile.FileOk += OpenFile_FileOk;
+            // 
+            // CompleteTestBtn
+            // 
+            CompleteTestBtn.AutoSize = true;
+            CompleteTestBtn.Enabled = false;
+            CompleteTestBtn.Location = new Point(361, 62);
+            CompleteTestBtn.Name = "CompleteTestBtn";
+            CompleteTestBtn.Size = new Size(152, 30);
+            CompleteTestBtn.TabIndex = 4;
+            CompleteTestBtn.Text = "Пройти тестування";
+            CompleteTestBtn.UseVisualStyleBackColor = true;
+            CompleteTestBtn.Click += CompleteTestBtn_Click;
+            // 
             // TestSelection
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(800, 450);
+            Controls.Add(CompleteTestBtn);
             Controls.Add(TeacherGB);
             Controls.Add(TestsCB);
             Controls.Add(GradesCB);
@@ -158,6 +165,7 @@
             TeacherGB.ResumeLayout(false);
             TeacherGB.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -168,8 +176,9 @@
         private GroupBox TeacherGB;
         private Button AddGradeBtn;
         private Button AddSubjectBtn;
-        private Button DeleteTestBtn;
         private Button CreateTestBtn;
         private Button ImportTestBtn;
+        private OpenFileDialog OpenFile;
+        private Button CompleteTestBtn;
     }
 }
