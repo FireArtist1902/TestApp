@@ -33,7 +33,6 @@
             SubmitAnswerBTN = new Button();
             pictureBox1 = new PictureBox();
             AddImageBtn = new Button();
-            Files = new FileSystemWatcher();
             SubmitCorrectBtn = new Button();
             CorrectTB = new TextBox();
             IsMultipleCB = new CheckBox();
@@ -42,8 +41,10 @@
             Score = new NumericUpDown();
             label1 = new Label();
             TestNameTB = new TextBox();
+            NumAnswers = new Label();
+            NumCorrectAnswers = new Label();
+            openFileDialog1 = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)Files).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Score).BeginInit();
             SuspendLayout();
             // 
@@ -55,11 +56,10 @@
             TaskTB.PlaceholderText = "Запитання/завдання";
             TaskTB.Size = new Size(497, 129);
             TaskTB.TabIndex = 0;
-            TaskTB.TextChanged += textBox1_TextChanged;
             // 
             // PossibleTB
             // 
-            PossibleTB.Location = new Point(12, 159);
+            PossibleTB.Location = new Point(12, 177);
             PossibleTB.Name = "PossibleTB";
             PossibleTB.PlaceholderText = "Варіант відповіді";
             PossibleTB.Size = new Size(182, 27);
@@ -67,12 +67,13 @@
             // 
             // SubmitAnswerBTN
             // 
-            SubmitAnswerBTN.Location = new Point(209, 157);
+            SubmitAnswerBTN.Location = new Point(209, 175);
             SubmitAnswerBTN.Name = "SubmitAnswerBTN";
             SubmitAnswerBTN.Size = new Size(112, 29);
             SubmitAnswerBTN.TabIndex = 2;
             SubmitAnswerBTN.Text = "Підтвердити";
             SubmitAnswerBTN.UseVisualStyleBackColor = true;
+            SubmitAnswerBTN.Click += SubmitAnswerBTN_Click;
             // 
             // pictureBox1
             // 
@@ -91,24 +92,21 @@
             AddImageBtn.TabIndex = 4;
             AddImageBtn.Text = "Додати зображення";
             AddImageBtn.UseVisualStyleBackColor = true;
-            // 
-            // Files
-            // 
-            Files.EnableRaisingEvents = true;
-            Files.SynchronizingObject = this;
+            AddImageBtn.Click += AddImageBtn_Click;
             // 
             // SubmitCorrectBtn
             // 
-            SubmitCorrectBtn.Location = new Point(209, 203);
+            SubmitCorrectBtn.Location = new Point(209, 246);
             SubmitCorrectBtn.Name = "SubmitCorrectBtn";
             SubmitCorrectBtn.Size = new Size(112, 29);
             SubmitCorrectBtn.TabIndex = 6;
             SubmitCorrectBtn.Text = "Підтвердити";
             SubmitCorrectBtn.UseVisualStyleBackColor = true;
+            SubmitCorrectBtn.Click += SubmitCorrectBtn_Click;
             // 
             // CorrectTB
             // 
-            CorrectTB.Location = new Point(12, 204);
+            CorrectTB.Location = new Point(12, 247);
             CorrectTB.Name = "CorrectTB";
             CorrectTB.PlaceholderText = "Правильний варіант";
             CorrectTB.Size = new Size(182, 27);
@@ -133,6 +131,7 @@
             AddNewBtn.TabIndex = 8;
             AddNewBtn.Text = "Додати ще одне завдання";
             AddNewBtn.UseVisualStyleBackColor = true;
+            AddNewBtn.Click += AddNewBtn_Click;
             // 
             // EndBtn
             // 
@@ -143,10 +142,11 @@
             EndBtn.TabIndex = 9;
             EndBtn.Text = "Завершити";
             EndBtn.UseVisualStyleBackColor = true;
+            EndBtn.Click += EndBtn_Click;
             // 
             // Score
             // 
-            Score.Location = new Point(12, 248);
+            Score.Location = new Point(12, 280);
             Score.Name = "Score";
             Score.Size = new Size(150, 27);
             Score.TabIndex = 10;
@@ -154,7 +154,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(168, 255);
+            label1.Location = new Point(168, 287);
             label1.Name = "label1";
             label1.Size = new Size(202, 20);
             label1.TabIndex = 11;
@@ -168,14 +168,39 @@
             TestNameTB.PlaceholderText = "Назва тесту";
             TestNameTB.Size = new Size(339, 52);
             TestNameTB.TabIndex = 12;
-            TestNameTB.TextChanged += textBox1_TextChanged_1;
+            // 
+            // NumAnswers
+            // 
+            NumAnswers.AutoSize = true;
+            NumAnswers.Location = new Point(12, 154);
+            NumAnswers.Name = "NumAnswers";
+            NumAnswers.Size = new Size(17, 20);
+            NumAnswers.TabIndex = 13;
+            NumAnswers.Text = "0";
+            // 
+            // NumCorrectAnswers
+            // 
+            NumCorrectAnswers.AutoSize = true;
+            NumCorrectAnswers.Location = new Point(12, 224);
+            NumCorrectAnswers.Name = "NumCorrectAnswers";
+            NumCorrectAnswers.Size = new Size(17, 20);
+            NumCorrectAnswers.TabIndex = 14;
+            NumCorrectAnswers.Text = "0";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "OpenFile";
+            openFileDialog1.FileOk += openFileDialog1_FileOk;
             // 
             // TestCreation
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(842, 319);
+            Controls.Add(NumCorrectAnswers);
+            Controls.Add(NumAnswers);
             Controls.Add(TestNameTB);
             Controls.Add(label1);
             Controls.Add(Score);
@@ -190,10 +215,10 @@
             Controls.Add(PossibleTB);
             Controls.Add(TaskTB);
             Name = "TestCreation";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Створення тесту";
-            Load += TestCreation_Load;
+            FormClosing += TestCreation_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)Files).EndInit();
             ((System.ComponentModel.ISupportInitialize)Score).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -206,7 +231,6 @@
         private Button SubmitAnswerBTN;
         private PictureBox pictureBox1;
         private Button AddImageBtn;
-        private FileSystemWatcher Files;
         private Button AddNewBtn;
         private CheckBox IsMultipleCB;
         private Button SubmitCorrectBtn;
@@ -215,5 +239,8 @@
         private TextBox TestNameTB;
         private Label label1;
         private NumericUpDown Score;
+        private Label NumAnswers;
+        private Label NumCorrectAnswers;
+        private OpenFileDialog openFileDialog1;
     }
 }

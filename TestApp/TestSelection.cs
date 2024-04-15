@@ -65,6 +65,7 @@ namespace TestApp
                 string temp = item.Remove(0, 10 + SubjectsCB.Items[selected].ToString().Length);
                 GradesCB.Items.Add(temp);
             }
+            AddGradeBtn.Enabled = true;
         }
 
         private void GradesCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,6 +77,8 @@ namespace TestApp
                 string temp = item.Remove(0, 9 + SubjectsCB.Items[selected].ToString().Length);
                 GradesCB.Items.Add(temp);
             }
+            CreateTestBtn.Enabled = true;
+            ImportTestBtn.Enabled = true;
         }
 
         private void AddGradeBtn_Click(object sender, EventArgs e)
@@ -92,8 +95,13 @@ namespace TestApp
 
         private void CreateTestBtn_Click(object sender, EventArgs e)
         {
-            TestCreation test = new TestCreation();
+            TestCreation test = new TestCreation(SubjectsCB.Text, GradesCB.Text);
             test.ShowDialog();
+        }
+
+        private void TestsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DeleteTestBtn.Enabled = true;
         }
     }
 }

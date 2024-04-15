@@ -70,6 +70,7 @@
             TestsCB.Size = new Size(151, 28);
             TestsCB.TabIndex = 2;
             TestsCB.Text = "Тести";
+            TestsCB.SelectedIndexChanged += TestsCB_SelectedIndexChanged;
             // 
             // TeacherGB
             // 
@@ -87,6 +88,7 @@
             // DeleteTestBtn
             // 
             DeleteTestBtn.AutoSize = true;
+            DeleteTestBtn.Enabled = false;
             DeleteTestBtn.Location = new Point(350, 73);
             DeleteTestBtn.Name = "DeleteTestBtn";
             DeleteTestBtn.Size = new Size(136, 30);
@@ -98,6 +100,7 @@
             // CreateTestBtn
             // 
             CreateTestBtn.AutoSize = true;
+            CreateTestBtn.Enabled = false;
             CreateTestBtn.Location = new Point(178, 73);
             CreateTestBtn.Name = "CreateTestBtn";
             CreateTestBtn.Size = new Size(136, 30);
@@ -109,6 +112,7 @@
             // ImportTestBtn
             // 
             ImportTestBtn.AutoSize = true;
+            ImportTestBtn.Enabled = false;
             ImportTestBtn.Location = new Point(6, 73);
             ImportTestBtn.Name = "ImportTestBtn";
             ImportTestBtn.Size = new Size(136, 30);
@@ -119,6 +123,7 @@
             // AddGradeBtn
             // 
             AddGradeBtn.AutoSize = true;
+            AddGradeBtn.Enabled = false;
             AddGradeBtn.Location = new Point(178, 16);
             AddGradeBtn.Name = "AddGradeBtn";
             AddGradeBtn.Size = new Size(132, 30);
@@ -149,6 +154,7 @@
             Controls.Add(GradesCB);
             Controls.Add(SubjectsCB);
             Name = "TestSelection";
+            StartPosition = FormStartPosition.CenterScreen;
             TeacherGB.ResumeLayout(false);
             TeacherGB.PerformLayout();
             ResumeLayout(false);

@@ -116,6 +116,7 @@
             Controls.Add(PasswordTB);
             Controls.Add(LoginTB);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Реєстрація/вхід";
             ResumeLayout(false);
             PerformLayout();

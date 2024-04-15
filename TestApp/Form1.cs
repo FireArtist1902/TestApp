@@ -14,9 +14,9 @@ namespace TestApp
 
         private bool IsExist(User user, List<User> users)
         {
-            foreach(var items in users)
+            foreach (var items in users)
             {
-                if(user.Login == items.Login && user.Password == items.Password && user.IsStudent == items.IsStudent && user.IsTeacher == items.IsTeacher)
+                if (user.Login == items.Login && user.Password == items.Password && user.IsStudent == items.IsStudent && user.IsTeacher == items.IsTeacher)
                 {
                     return true;
                 }
@@ -41,7 +41,7 @@ namespace TestApp
                 User user = new User() { Login = LoginTB.Text, Password = PasswordTB.Text, IsStudent = StudentRB.Checked, IsTeacher = TeacherRB.Checked };
                 if (user.IsTeacher)
                 {
-                    if(!IsExist(user, Teachers))
+                    if (!IsExist(user, Teachers))
                     {
                         Teachers.Add(user);
                         string json = JsonSerializer.Serialize(Teachers);
