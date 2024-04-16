@@ -217,6 +217,7 @@
             Name = "TestCreation";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Створення тесту";
+            Load += TestCreation_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)Score).EndInit();
             ResumeLayout(false);

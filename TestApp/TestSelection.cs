@@ -160,6 +160,7 @@ namespace TestApp
             FileStream file = File.Create($@"Subjects\{SubjectsCB.Items[selected]}\{GradesCB.Items[gradeSelected]}\{name}");
             file.Close();
             File.Copy(OpenFile.FileName, $@"Subjects\{SubjectsCB.Items[selected]}\{GradesCB.Items[gradeSelected]}\{name}", true);
+            Refresh();
         }
 
         private void CompleteTestBtn_Click(object sender, EventArgs e)

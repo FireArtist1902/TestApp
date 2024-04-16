@@ -97,5 +97,10 @@ namespace TestApp
         private void TestCreation_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
+
+        private void TestCreation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
